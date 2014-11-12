@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<title>GPS</title>
+<body>
+<div id="pos">
+Getting GPS Information...
+</div>
+<div id="acc">
+Getting Accelerometer Information...
+</div>
+<script type="text/javascript" src="cordova.js"></script>
+
+<script>
+
+/*
+if(navigator.geolocation) {
+  (function() {
+    var posDiv = document.getElementById('pos');
+    navigator.geolocation.watchPosition(function(posObj) {
+      var posArr = [];
+      for(var i in posObj.coords) {
+        posArr.push([i, posObj.coords[i]].join('\t'));
+      }
+      posDiv.innerHTML = posArr.join('<br />');
+    });
+  })();
+}
+*/
+alert(navigator.accelerometer);
+if(navigator.accelerometer) {
+  
+  (function() {
+    var accDiv = document.getElementById('acc');
+    navigator.accelerometer.watchAcceleration(function(accObj) {
+      var accArr = [];
+      accArr.push('X: ' + accObj.x);
+      /*
+      for(var i in accObj) {
+        accArr.push([i, accObj[i]].join('\t'));
+      }
+      */
+      accDiv.innerHTML = accArr.join('<br />');
+    }, function() {
+      accDiv.innerHTML = 'Error getting acceleration';
+    }, {frequency: 1000});
+  })();
+}
+</script>
+</body>
+</html>
