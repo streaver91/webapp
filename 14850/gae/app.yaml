@@ -1,0 +1,14 @@
+application: root-grammar-797
+version: 1
+runtime: php
+api_version: 1
+
+handlers:
+- url: /webapp/14850/www/addon\.php.*
+  script: addon.php
+  
+- url: /webapp/14850/www/fetchPlanner\.php.*
+  script: fetchPlanner.php
+  
+- url: /.*
+  script: helloworld.php

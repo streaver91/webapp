@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>CURL Test</title>
+</head>
+<body>
+CURL Test
+<div id="log">
+</div>
+<script src="jquery.js"></script>
+<script>
+var url = 'http://tcat.nextinsight.com/index.php';
+var param = {
+  search: 'search',
+  start: 6000,
+  end: 8102,
+  day: 1,
+  departure: 0,
+  starthours: 10,
+  startminutes: 30,
+  startampm: 0,
+  customer: 1,
+  sort: 1,
+  transfers: 2,
+  addr: '',
+  city: 'Ithaca',
+  radius: '.25'
+};
+/*
+$.post(url, param, function(data) {
+  alert('hi');
+  $('#log').html(data);
+});
+*/
+$('#log').html('hi2');
+alert('hi');
+$.get('http://tcat.nextinsight.com/stops/9182', function(data) {alert(data);$('#log').html(data.match(/Route \d+ Sunday /g)[0]);});
+</script>
+</body>
+</html>

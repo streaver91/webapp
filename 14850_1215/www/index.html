@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
+<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+<link rel="stylesheet" type="text/css" href="css/search.css" />
+<title>Where To</title>
+</head>
+<body>
+<div class="background">
+  <img src="img/bg.jpg" class="stretch" alt="" />
+</div>
+<div class="search">
+  <input type="text" value="WHERE TO?" class="search-box" id="search-box" />
+  <div style="height:10px;">
+  </div>
+  <div id="search-results" class="search-results" style="display:none;">
+    
+  </div>
+  <div id="recent-results" class="recent-results">
+    <a class="result-box" href="#" data-location="42.447021,-76.525297">601 Warren Pl, Ithaca, NY</a>
+  </div>
+  <div id="special-results" class="special-results">
+    <a class="result-box result-box-special" href="#" data-location="42.4353746,-76.5106129">Wegmans Pharmacy</a>
+    <a class="result-box result-box-special" href="#" data-location="42.439820, -76.497102">Ithaca Commons</a>
+  </div>
+</div>
+<div class="route" id="route">
+  <div class="route-map">
+    <div id="map-canvas">
+    </div>
+    <a href="javascript:;" class="route-map-back" id="route-map-back">BACK</a>
+  </div>
+  <div class="route-wrap" id="route-wrap">
+    <div id="search-label" class="search-label">
+      Searching
+      <hr class="route-hr" />
+    </div>
+    <div class="route-box">
+
+      <div class="route-title">
+        <span class="route-title-num">31 > 13</span>  NEXT BUS IN <span class="route-next-min">15</span> MIN
+      </div>
+      <div class="route-box-detail">
+        <table>
+          <tr>
+            <td class="route-box-time">17:05</td>
+            <td>Take <span class="route-bus-num">30</span> at <span>Uris Hall</span></td>
+          </tr>
+          <tr>
+            <td class="route-box-time"></td>
+            <td>(towards <span>Ithaca Commons</span>)</td>
+          </tr>
+          <tr>
+            <td class="route-box-time">17:25</td>
+            <td>Get off <span class="route-bus-num">30</span> at <span>Ithaca Commons</span></td>
+          </tr>
+          <tr>
+            <td class="route-box-time"></td>
+            <td>Walk to Green Commons</td>
+          </tr>
+          <tr>
+            <td class="route-box-time">17:05</td>
+            <td>Take <span class="route-bus-num">14</span> at <span>Uris Hall</span> towards <span>Ithaca Commons</span></td>
+          </tr>
+          <tr>
+            <td class="route-box-time">17:25</td>
+            <td>Get off <span class="route-bus-num">51</span> at <span>Ithaca Commons</span></td>
+          </tr>
+        </table>
+      </div>
+      <hr class="route-hr" />
+    </div>
+    
+    
+    
+    <div class="route-box"> 
+      <div class="route-title">
+        <span class="route-title-num">31 > 13</span>  NEXT BUS IN <span class="route-next-min">35</span> MIN
+      </div>
+      <div class='route-box-detail'>
+        <table>
+          <tr>
+            <td class="route-box-time">17:05</td>
+            <td>Take <span class="route-bus-num">30</span> at <span>Uris Hall</span></td>
+          </tr>
+          <tr>
+            <td class="route-box-time"></td>
+            <td>(towards <span>Ithaca Commons</span>)</td>
+          </tr>
+          <tr>
+            <td class="route-box-time">17:25</td>
+            <td>Get off <span class="route-bus-num">30</span> at <span>Ithaca Commons</span></td>
+          </tr>
+          <tr>
+            <td class="route-box-time"></td>
+            <td>Walk to Green Commons</td>
+          </tr>
+          <tr>
+            <td class="route-box-time">17:05</td>
+            <td>Take <span class="route-bus-num">14</span> at <span>Uris Hall</span> towards <span>Ithaca Commons</span></td>
+          </tr>
+          <tr>
+            <td class="route-box-time">17:25</td>
+            <td>Get off <span class="route-bus-num">51</span> at <span>Ithaca Commons</span></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    
+  </div>
+</div>
+<script src="js/jquery.js"></script>
+<script src="js/search.js"></script>
+</body>
+</html>

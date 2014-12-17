@@ -1,0 +1,28 @@
+<html>
+<body>
+<meta charset="utf-8">
+<input type="text" id="address" />
+<input type="button" value="Search" id="search" />
+<div id="results">
+</div>
+<script src="jquery.js"></script>
+<script>
+var obj;
+$('#search').click(function() {
+  var address = $('#address').val();
+  var API_KEY = 'AIzaSyAtFRqiCFal5V45ugeSg7kuozo4D_xQrBM';
+  var url = 'https://maps.googleapis.com/maps/api/geocode/json';
+  $.get(url, {address: address, key: API_KEY, components: 'postal_code:14850'}, function(data) {
+    console.log(data);
+    var results = data.results;
+    obj = results;
+    for(var i = 0; i < results.length; i++) {
+      console.log(results[i].formatted_address);
+      $('<div><a href="#">' + results[i].formatted_address + '</a></div>').appendTo('#results');
+    }
+    // $('#results').html(data);
+  });
+});
+</script>
+</body>
+</html>

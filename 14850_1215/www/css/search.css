@@ -1,0 +1,254 @@
+@import url('common.css');
+
+@font-face {
+    font-family: ostrich;
+    src: url('../font/ostrich-regular.ttf');
+}
+
+@font-face {
+	font-family: SinkinSans;
+	src: url('../font/SinkinSans-300Light.otf');
+}
+
+@font-face {
+	font-family: esquare;
+	src: url('../font/E-SQUARE_demo.otf');
+}
+
+input[type=text], textarea {
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  border: 1px solid #DDDDDD;
+  border-bottom: 1px solid #bbb;
+  border-right: 1px solid #bbb;
+}
+ 
+input[type=text]:focus, textarea:focus {
+  box-shadow: 0 0 5px rgba(166, 166, 166, 1);
+  border: 1px solid rgba(122, 122, 122, 1);
+}
+
+.background {
+    width: 100%; 
+    height: 100%; 
+    position: fixed; 
+    left: 0px; 
+    top: 0px; 
+    z-index: -1; /* Ensure div tag stays behind content; -999 might work, too. */
+}
+
+.stretch {
+	max-width: 120%;
+	min-width: 100%;
+	min-height: 100%;
+}
+
+.search {
+	margin: 13px;
+}
+
+.search-box {
+    width: 100%;
+    display:block;
+    padding: 16px 16px 13px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+	color: #888;
+	font-family: ostrich;
+	font-size: 26px;
+	line-height: 20px;
+	vertical-align: top;
+}
+
+div.result-box {
+	display: block;
+	width: 100%;
+	padding: 14px 14px 11px 14px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+	color: #888;
+	font-family: ostrich;
+	font-size: 26px;
+	line-height: 20px;
+	vertical-align: top;
+	background-color: rgba(255,255,255,0.7);
+	text-decoration: none;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+a.result-box:link, a.result-box:visited {
+	display: block;
+	width: 100%;
+	padding: 14px 14px 11px 14px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+	color: #888;
+	font-family: ostrich;
+	font-size: 26px;
+	line-height: 20px;
+	vertical-align: top;
+	background-color: rgba(255,255,255,0.7);
+	text-decoration: none;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+
+a.result-box:hover, a.result-box:active {
+	display: block;
+	width: 100%;
+	padding: 14px 14px 11px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+	color: #fff;
+	font-family: ostrich;
+	font-size: 26px;
+	line-height: 20px;
+	vertical-align: top;
+	background-color: #333;
+	text-decoration: none;
+}
+
+a.result-box-special:link, a.result-box-special:visited {
+	background-color: rgba(222,222,222,0.8);
+	text-decoration: none;
+}
+
+a.result-box-special:hover, a.result-box-special:active {
+	background-color: #333;
+}
+
+.route {
+    width: 100%; 
+    height: 100%; 
+    position: fixed; 
+    left: 0px; 
+    top: 0px; 
+    z-index: 2000;
+	background-color: #fff;
+	overflow: scroll;
+	display: none;
+}
+
+.route-wrap {
+	
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+	height: 100%;
+	position: absolute;
+	width: 100%;
+	
+}
+
+.route-map {
+	width: 100%;
+	height: 200px;
+	background-color: #999;
+}
+
+a.route-map-back:link, a.route-map-back:visited {
+	display: block;
+	background-color: rgba(255,255,255,0.8);
+	color: #333;
+	position: absolute;
+	top: 150px;
+	right: 0;
+	height: 38px;
+	width: 90px;
+	line-height: 40px;
+	font-size: 26px;
+	font-family: ostrich;
+	text-decoration: none;
+	text-align: center;
+
+}
+
+a.route-map-back:hover, a.route-map-back:active {
+	color: #fff;
+	background-color:#333;
+}
+
+#map-canvas {
+	height: 100%;
+	width: 100%;
+}
+
+.route-box {
+	margin: 8px;
+}
+
+.route-box-detail {
+	font-family: SinkinSans;
+	color: #999;
+	line-height: 25px;
+}
+
+.route-title {
+	font-family: esquare;
+	color: #bbb;
+}
+
+.route-title-num {
+	font-family: esquare;
+	font-size: 30px;
+	line-height: 40px;
+	color: #619BFC;
+}
+
+.route-box-time {
+	color: #888;
+	width: 90px;
+}
+
+.route-next {
+	top: 2px;
+	float: right;
+	color: #999;
+}
+
+.route-next-min {
+	font-size: 20px;
+	color: #333;
+}
+
+.route-box-detail {
+	margin-top: 0px;
+	font-size: 16px;
+	line-height: 20px;
+	font-family: esquare;
+	color: #bbb;
+}
+
+.route-bus-num {
+	font-family: esquare;
+	font-size: 16px;
+	color: #888;
+}
+
+.route-hr {
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.25), rgba(0,0,0,0)); 
+    background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.25), rgba(0,0,0,0)); 
+    background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.25), rgba(0,0,0,0)); 
+    background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.25), rgba(0,0,0,0)); 
+}
+
+.search-label {
+	font-family: esquare;
+	color: #bbb;
+	margin: 8px;
+}
+
+.route-box {
+	
+}
