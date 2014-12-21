@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
+<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=medium-dpi" />
+<link rel="stylesheet" type="text/css" href="css/reset.css" />
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<script src="phonegap.js"></script>
+<title>14850 Bus Direction</title>
+</head>
+<body>
+
+<div class="background">
+  <img src="img/CornellWaterfallsCompressed.jpg" class="stretch" alt="" />
+</div>
+
+<div class="search">
+  <input type="text" value="FROM?" class="search-box" id="search-box" />
+  <div class="search-delete" id="search-delete">
+  </div>
+  <div style="height:5px;">
+  </div>
+  <div id="search-results" class="search-results" style="display:none;">
+  </div>
+  <div id="special-results" class="special-results">
+	<a class="result-box result-box-special" href="javascript:;" data-special="1" data-location="0,0"># My Location</a>
+	<div id="recent-results" class="recent-results"></div>
+    <a class="result-box result-box-special" href="javascript:;" data-special="1" data-location="42.426899,-76.513805"># Walmart Supercenter</a>
+    <a class="result-box result-box-special" href="javascript:;" data-special="1" data-location="42.439820,-76.497102"># Ithaca Commons</a>
+  </div>
+  <div id="addon-results" class="addon-results">
+  </div>
+</div>
+
+<script type="text/javascript" src="cordova.js"></script>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/main_v3.js"></script>
+<script type="text/javascript">
+  app.fn.init('from');
+</script>
+</body>
+</html>
