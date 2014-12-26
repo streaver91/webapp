@@ -78,6 +78,10 @@ input[type=text]:focus, textarea:focus {
 	z-index: 1500;
 }
 
+.search-delete-from {
+	top: 46px;
+}
+
 .result-box {
 	display: block;
 	width: 100%;
@@ -100,6 +104,27 @@ a.result-box:hover, a.result-box:active {
 	color: #fff;
 	background-color: rgba(0,0,0,0.7);
 	text-decoration: none;
+}
+
+.destination {
+	background-color: #F7E83E;
+	line-height: 40px;
+	margin-bottom: 6px;
+	padding: 0px;
+	padding-left: 10px;
+	font-family: esquare;
+	color: #333;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.destination a:link, .destination a:visited {
+	color: #666;
+}
+
+.destination a:hover, .destination a:active {
+	top: 1px;
+	left: 1px;
 }
 
 /* end: search */
@@ -156,6 +181,7 @@ a.route-map-back:link, a.route-map-back:visited {
 a.route-map-back:hover, a.route-map-back:active {
 	color: rgba(255,255,255,0.8);
 	background-color:#333;
+	z-index: 4000;
 }
 
 a.route-link:link, a.route-link:visited {
