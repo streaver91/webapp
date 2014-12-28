@@ -18,8 +18,8 @@ app.fn = (function() {
   var _GEOBOUNDS = '42.298304,-76.711971|42.672286,-76.218885';
   
   // Route fetching connection
-  // var _HOST_ADDRESS = 'http://10.128.9.43';
-  // var _HOST_ADDRESS = 'http://127.0.0.1:10080';
+  // var _HOST_ADDRESS = 'http://10.128.9.43:8081';
+  // var _HOST_ADDRESS = 'http://127.0.0.1:9081';
   var _HOST_ADDRESS = 'http://root-grammar-797.appspot.com';
   var _ROUTE_FETCH_URL = _HOST_ADDRESS + '/fetchPlanner.php';
   var _ADDON_URL = _HOST_ADDRESS + '/addon.php';
@@ -436,6 +436,17 @@ app.fn = (function() {
       $('#route-map-back').click(function() {
         location.href = 'index.html';
       });
+      // Compare time and location of most recent search
+      // Fetch from localStorage if latlng equals and time < threshold (1 min)
+      var recentResult = localStorage.getItem('recentResult');
+      if(recentResult && recentResult.lat1 = lat1 && recentResult.lat2 == lat2 && recentResult.lng1 == lng1 && recentResult.lng2 == lng2) {
+        var curTime = (new Date()).getTime();
+        var prevTime = recentResult.time;
+        if(curTime - prevTime < 60000) {
+          $('#route-wrap').html(recentResult.wrap);
+          $('#route-status > span').html(recentResult.status);
+        }
+      }
       $('.route-box').remove();
       if(lat1 < 0.1) {
         // Starting from current location

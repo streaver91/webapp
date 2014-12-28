@@ -184,7 +184,9 @@ foreach($routes[1] as $route) {
 			if($involvedRoute == '79' || $involvedRoute == '96') continue;
 			$routeURL = $routeURLs[$involvedRoute];
 			// echo $routeURL;
-			$step = preg_replace('/Route ' . $involvedRoute . '/', '<a class="route-link" href="javascript:;" onclick="window.open(encodeURI(\'' . $routeURL . '\'), \'_system\')">Route ' . $involvedRoute . '</a>', $step);
+			// $step = preg_replace('/Route ' . $involvedRoute . '/', '<a class="route-link" href="javascript:;" onclick="window.open(encodeURI(\'' . $routeURL . '\'), \'_system\')">Route ' . $involvedRoute . '</a>', $step);
+			$step = preg_replace('/Route ' . $involvedRoute . '/', '<a class="route-link" href="' . $routeURL . '">Route ' . $involvedRoute . '</a>', $step);
+			// console.log($step);
 		}
 		$step = '<tr><td class="route-box-time">' . $busTime . '</td><td>' . $step . '</td></tr>';
 		array_push($currentRouteOutputArr, $step);
