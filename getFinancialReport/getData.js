@@ -1,6 +1,6 @@
 
 var companies = $inputText.val().split('\n');
-var market = 'LS';
+var market = 'BR';
 var month = 'Jun';
 var year = '2014';
 var reportItems = [];
