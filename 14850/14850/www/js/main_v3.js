@@ -397,6 +397,18 @@ app.fn = (function() {
     var returnURL = 'route.html?lat1=' + app.lat2 + '&lng1=' + app.lng2 + '&lat2=' + app.lat1 + '&lng2=' + app.lng1;
     $('#route-wrap').append('<div class="route-box"><a class="route-link" href="' + returnURL + '">Return Trip</a></div>');
     $('#route-status > span').html(_arrivedRoutes.length + ' result(s) found');
+    
+    // Save for recent retrieving
+    var recentResult = {
+      lat1: _getQuery('lat1'),
+      lng1: _getQuery('lng1'),
+      lat2: _getQuery('lat2'),
+      lng2: _getQuery('lng2'),
+      time: (new Date()).getTime(),
+      wrap: $('#route-wrap').html(),
+      status: $('#route-status > span').html()
+    };
+    localStorage.setItem('recentResult', JSON.stringify(recentResult));
   };
   
   var _getQuery = function(name) {
@@ -438,13 +450,18 @@ app.fn = (function() {
       });
       // Compare time and location of most recent search
       // Fetch from localStorage if latlng equals and time < threshold (1 min)
-      var recentResult = localStorage.getItem('recentResult');
-      if(recentResult && recentResult.lat1 = lat1 && recentResult.lat2 == lat2 && recentResult.lng1 == lng1 && recentResult.lng2 == lng2) {
+      var recentResult = JSON.parse(localStorage.getItem('recentResult'));
+      console.log(recentResult);
+      if(recentResult && recentResult.lat1 == lat1 && recentResult.lat2 == lat2 && recentResult.lng1 == lng1 && recentResult.lng2 == lng2) {
         var curTime = (new Date()).getTime();
         var prevTime = recentResult.time;
         if(curTime - prevTime < 60000) {
           $('#route-wrap').html(recentResult.wrap);
           $('#route-status > span').html(recentResult.status);
+          console.log('flag');
+          recentResult.time = (new Date()).getTime();
+          localStorage.setItem('recentResult', JSON.stringify(recentResult));
+          return;
         }
       }
       $('.route-box').remove();
