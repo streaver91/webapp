@@ -8,5 +8,7 @@ if(app.version == 'beta') {
   $('<div class="result-box" style="background-color: rgba(255,255,255,0.6);white-space:normal;line-height:20px;font-size:18px;">NOTE: THIS IS A BETA TEST VERSION<br />IT MAY CRASH OR PRODUCE UNEXPECTED ERRORS<br />IF HAVE ANY FEEDBACK, PLEASE SEND ME AN EMAIL AT: ROOT2418@GMAIL.COM</div>').appendTo('#addon-results');
 }
 
+// $('<div class="result-box" style="background-color: rgba(255,255,255,0.6);white-space:normal;line-height:20px;font-size:18px;color:red;">ALERT: SORRY WE ARE EXPERIENCING TECHNICAL DIFFICULTIES DUE TO HIGH TRAFFIC</div>').appendTo('#addon-results');
+
 // During beta test period only
-localStorage.setItem('beta-tester', '1');
+// localStorage.setItem('beta-tester', '1');

@@ -37,6 +37,7 @@ $routeURLs = array(
 
 $_HOUR_INCREMENT_INTERVAL = 3;
 $_GAE = true;
+$_STEP_TIME = 3;
 
 // Get query string
 $start = $_GET['start'];
@@ -44,6 +45,20 @@ $startwalk = $_GET['startwalk'] + 0.0;
 $end = $_GET['end'];
 $endwalk = $_GET['endwalk'] + 0.0;
 $token = $_GET['token'];
+
+if(!isset($_GET['version'])) {
+	exit();
+}
+
+$version = $_GET['version'];
+
+if($version == 'pro') {
+	$pro = true;
+} else {
+	$pro = false;
+}
+
+echo '// console.log(\'version: ' . $version . '\');';
 
 date_default_timezone_set('America/New_York');
 
@@ -89,7 +104,7 @@ for($i = 0; $i < 5; $i++) {
 		'transfers' => '2',
 		'addr' => '',
 		'city' => 'Ithaca',
-		'radius' => '.25'
+		'radius' => '.5'
 	);
 	
 	$fields_string = http_build_query($fields);
@@ -130,23 +145,30 @@ foreach($routes[1] as $route) {
 	
 	// Get Trip Time Toal
 	preg_match('/Estimated Trip Time: ([^<]*)/', $route, $timeString);
-	$timeArr = preg_split('/\D+/', $timeString[1], -1, PREG_SPLIT_NO_EMPTY);
-	if(count($timeArr) == 1) {
-		$timeTotal = $timeArr[0] + ceil($startwalk) + ceil($endwalk);
-	} else {
-		$timeTotal = $timeArr[0] * 60 + $timeArr[1] + ceil($startwalk) + ceil($endwalk);
-	}
-	array_push($currentRouteOutputArr, '<div class="route-box-totaltime">Estimated trip time: <span>' . ceil($timeTotal) . '</span> min</div>');
-	$currentRouteArr['timeTotal'] = $timeTotal;
-	$busTimeSet = false;
-	
-	// Generate output
 	// Extract steps description
 	preg_match('/<strong>(.*)<br>/', $route, $steps);
 	$steps = $steps[0];
 	preg_match_all('/(.*?)(?:<br>|<br \/>)/', $steps, $steps);
 	$steps = $steps[1];
+	$numOfSteps = substr_count($route, 'Pay');
+	echo '// Num of steps: ' . $numOfSteps;
+	// echo '// ' . json_encode($steps);
+	$timeArr = preg_split('/\D+/', $timeString[1], -1, PREG_SPLIT_NO_EMPTY);
+	// if(count($timeArr) == 1) {
+	if(preg_match('/hour/', $timeString[1]) == 0) {
+		$timeTotal = $timeArr[0] + ceil($startwalk) + ceil($endwalk);
+	} else {
+		// echo '// timeArr: ' . json_encode(timeArr);
+		$timeTotal = $timeArr[0] * 60 + $timeArr[1] + ceil($startwalk) + ceil($endwalk);
+	}
+	$timeTotal += ($numOfSteps - 1) * $_STEP_TIME;
+	$currentRouteArr['timeTotal'] = $timeTotal;
+	$busTimeSet = false;
+	
+	// Generate output
+	array_push($currentRouteOutputArr, '<div class="route-box-totaltime">Estimated trip time: <span>' . ceil($timeTotal) . '</span> min</div>');
 	array_push($currentRouteOutputArr, '<table>');
+	
 	
 	// Extract info from each step
 	foreach($steps as $index => $step) {
@@ -155,7 +177,6 @@ foreach($routes[1] as $route) {
 		if(preg_match('/<u>Pay<\/u>/', $step)) {
 			continue;
 		}
-		
 		// Calculate arrival time
 		if(preg_match('/(?:<strong>(.*):<\/strong>|<b>(.*):<\/b>)/', $step, $busTime)) {
 			$step = str_replace($busTime[0], '', $step);

@@ -1,4 +1,5 @@
 <?php
+exit();
 // Get query string
 $start = $_GET['start'];
 $startwalk = $_GET['startwalk'] + 0.0;
@@ -103,6 +104,8 @@ foreach($routes[1] as $route) {
 		}
 		
 		// Calculate arrival time
+		// echo '// ' . json_encode($step);
+		
 		if(preg_match('/(?:<strong>(.*):<\/strong>|<b>(.*):<\/b>)/', $step, $busTime)) {
 			$step = str_replace($busTime[0], '', $step);
 			$busTime = $busTime[1];
@@ -119,6 +122,7 @@ foreach($routes[1] as $route) {
 		$step = str_replace('.', '', $step);
 		$step = preg_replace('/<a[^>]*>/', '<span class="route-bus-num">', $step);
 		array_push($currentRouteOutputArr, '<tr><td class="route-box-time">' . $busTime . '</td><td>' . $step . '</td></tr>');
+		
 	}
 	array_push($currentRouteOutputArr, '</table></div><hr class="route-hr" /></div>');
 	
